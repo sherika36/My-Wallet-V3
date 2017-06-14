@@ -1,10 +1,11 @@
 
 proxyquire = require('proxyquireify')(require)
-
-MyWallet =
-  wallet:
+MyWallet =  Blockchain.MyWallet;
+  wallet: Blockchain.Walletstore ;
+  Spender = Blockchain.Spender;
+  API = Blockchain.API;
     getNote: (hash) -> null
-    containsLegacyAddress: (addr) -> addr == "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+    containsLegacyAddress: (addr) -> addr == "1GwV7fPX97hmavc6iNrUogmjpLPrPFoE"
     hdwallet:
       account: () -> { index: 0, label: "Savings" }
 
@@ -31,7 +32,7 @@ describe 'Transaction', ->
       tx = Tx.factory(transactions["default"])
       expect(tx.processedInputs.length).toBe(2)
       expect(tx.processedOutputs.length).toBe(1)
-      expect(tx.processedInputs[0].address).toBe("1AaFJUs2XY1sGGg7p7ucJSZEJF3zB6r4Eh")
+      expect(tx.processedInputs[0].address).toBe("1GwV7fPX97hmavc6iNrUogmjpLPrPFoE")
       expect(tx.fromWatchOnly).toBeTruthy()
       expect(tx.toWatchOnly).toBeFalsy()
       expect(tx.txType).toEqual("sent")
