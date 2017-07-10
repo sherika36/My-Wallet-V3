@@ -1,5 +1,3 @@
-
-proxyquire = require('proxyquireify')(require)
 MyWallet =  Blockchain.MyWallet;
   wallet: Blockchain.Walletstore ;
   Spender = Blockchain.Spender;
